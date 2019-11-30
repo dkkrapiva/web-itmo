@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>task1</title>
+    <script>
+        function Word(str) {
+        return str.split(" ").length; //длина списка через указанный разделитель
+        };
+
+    function Letter(str) {
+        let k = 0;
+        for (i = 0; i < str.length; i++) {
+            if (str[i] == ' ' || str[i] == ',') k++
+        };
+        let ltrs = str.length - k;
+        return ltrs;
+    };
+
+    function GetFilename(url) {
+        if (url) {
+            return url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("."));
+        }
+        return "";
+    };
+    function TheWidestImage() {
+        if (document.images[0].width > document.images[1].width)
+            return document.images[0].width;
+        else return document.images[1].width;
+    };
+    function TotalHight(){
+        return document.images[0].height+document.images[1].height;
+    };
+    function showName() {
+        alert(event.currentTarget.value)
+    };
+    function showID() {
+        alert(event.currentTarget.parentNode.id)
+    };
+    function formReset(){
+        document.getElementById(event.currentTarget.parentNode.id).reset();
+    };
+    function CountField(){
+        alert(event.currentTarget.parentNode.length)
+    };
+    </script>
+    <style>
+        #img1{
+            height: 250px;
+            width: 250px;
+        }
+
+        #img2{
+            height: 280px;
+            width: 280px;
+        }
+
+        #icon1{
+            background-image: url(trash.png);
+            background-size: 20px;
+            border-radius: 10px;
+            background-position: left top;
+            background-repeat: no-repeat;
+            width: 145px;
+            height: 35px;
+        }
+
+        #icon1:hover { background: #CC3333;}
+
+        #icon2{
+            background-image: url(cursor.png);
+            background-size: 20px;
+            border-radius: 10px;
+            background-position: left top;
+            background-repeat: no-repeat;
+            width: 145px;
+            height: 35px;
+
+        }
+
+        #icon2:hover { background: #669933;}
+
+        #icon3{
+            background-image: url(eye.png);
+            background-size: 20px;
+            border-radius: 10px;
+            background-position: left top;
+            background-repeat: no-repeat;
+            width: 145px;
+            height: 35px;
+
+        }
+
+        #icon3:hover { background: #0066FF;}
+
+         #icon4{
+            background-image: url(contract.png);
+            background-size: 20px;
+            border-radius: 10px;
+            background-position: left top;
+            background-repeat: no-repeat;
+            width: 215px;
+            height: 35px;
+
+        }
+
+        #icon4:hover { background: #FFCCFF;}
+    </style>
+</head>
+
+<body>
+
+    <script>
+        let str = 'Чем больше усилий вы приложите, тем больше возможностей вам откроется'
+        document.write(str, '<br>') //Вывод строки на экран
+        document.write('Количество слов в предложении: ', Word(str), '<br>')
+        document.write('Количество букв в предложении: ', Letter(str), '<br>')
+        document.write('Адрес url документа: ', decodeURI(document.location.href), '<br>') // адрес документа, воспринимающий кириллицу
+        document.write('Имя файла: ', GetFilename(window.location.href), '<br>');
+        document.write('Расширение: ', document.location.pathname.split('.')[1], '<br>');
+    </script>
+
+    <br>
+
+    <a name="one" href="http://vk.com">VK</a><br>
+    <a name="two" href="http://google.com">Google</a><br>
+    <a name="three" href="http://www.ifmo.ru/ru/">ITMO</a><br>
+    <img src="img1.jpg" alt="cookies" id=img1>
+    <img src="img2.jpg" alt="cat" id=img2>
+
+    <br>
+
+    <script>
+        document.write('Количество анкоров: ', document.anchors.length, '<br>');
+        document.write('Количество ссылок: ', document.links.length, '<br>');
+        document.write('Содержимое первого анкора: ', document.anchors[0].innerHTML, '<br>');
+        document.write('Количество изображений: ', document.images.length, '<br>');
+        document.write('Ширина первого изображения: ',document.images[0].width, '<br>');
+        document.write('Ширина самой широкой картинки: ', TheWidestImage(), '<br>');
+        document.write('Сумма высот картинок: ', TotalHight(), '<br>');
+    </script>
+
+    <br>
+
+    <form id="1" name="f">
+        <label for="GET-name">Name:</label>
+        <input id="GET-name" type="text" name="firstname">
+        <input id="icon3" type="button" value="Имя кнопки" onclick='showName()'> 
+        <input id="icon2" type="button" value="ID формы" onclick='showID()'>
+        <input id="icon1" type="button" value="Сбросить форму" onclick='formReset()'>
+        <input id="icon4" type="button" value="Количество полей в форме" onclick='CountField()'>
+    </form>
+    <br>
+    <form id="2" name="e">
+        <label for="GET-name">Surname:</label>
+        <input id="GET-name" type="text" name="surname">
+        <input id="icon3" type="button" value="Имя кнопки" onclick='showName()'>
+        <input id="icon2" type="button" value="ID формы" onclick='showID()'>
+        <input id="icon1" type="button" value="Сбросить форму" onclick='formReset()'>
+        <input id="icon4" type="button" value="Количество полей в форме" onclick='CountField()'>
+    </form>
+    <br>
+    <form id="3" name="q">
+        <label for="GET-name">Patronymic:</label>
+        <input id="GET-name" type="text" name="patronymic">
+        <input id="icon3" type="button" value="Имя кнопки" onclick='showName()'>
+        <input id="icon2" type="button" value="ID формы" onclick='showID()'>
+        <input id="icon1" type="button" value="Сбросить форму" onclick='formReset()'>
+        <input id="icon4" type="button" value="Количество полей в форме" onclick='CountField()'>
+    </form>
+    <br>
+    <form id="4" name="d">
+        <label for="GET-name">Age:</label>
+        <input id="GET-name" type="text" name="age">
+        <input id="icon3" type="button" value="Имя кнопки" onclick='showName()'>
+        <input id="icon2" type="button" value="ID формы" onclick='showID()'>
+        <input id="icon1" type="button" value="Сбросить форму" onclick='formReset()'>
+        <input id="icon4" type="button" value="Количество полей в форме" onclick='CountField()'>
+    </form>
+    <br>
+    <form id="5" name="h">
+        <label for="GET-name">City:</label>
+        <input id="GET-name" type="text" name="city">
+        <input id="icon3" type="button" value="Имя кнопки" onclick='showName()'>
+        <input id="icon2" type="button" value="ID формы" onclick='showID()'>
+        <input id="icon1" type="button" value="Сбросить форму" onclick='formReset()'>
+        <input id="icon4" type="button" value="Количество полей в форме" onclick='CountField()'>
+        <br>
+    <form id="6" name="m">
+        <label for="GET-name">Eyes color:</label>
+        <input id="GET-name" type="text" name="eyescolor">
+        <input id="icon3" type="button" value="Имя кнопки" onclick='showName()'>
+        <input id="icon2" type="button" value="ID формы" onclick='showID()'>
+        <input id="icon1" type="button" value="Сбросить форму" onclick='formReset()'>
+        <input id="icon4" type="button" value="Количество полей в форме" onclick='CountField()'>
+    </form>
+        <br>
+    <form id="7" name="t">
+        <label for="GET-name">Street:</label>
+        <input id="GET-name" type="text" name="street">
+        <input id="icon3" type="button" value="Имя кнопки" onclick='showName()'>
+        <input id="icon2" type="button" value="ID формы" onclick='showID()'>
+        <input id="icon1" type="button" value="Сбросить форму" onclick='formReset()'>
+        <input id="icon4" type="button" value="Количество полей в форме" onclick='CountField()'>
+    </form>
+    <br>
+    <form id="8" name="g">
+        <label for="GET-name">Phone Number:</label>
+        <input id="GET-name" type="text" name="phonenumber">
+        <input id="icon3" type="button" value="Имя кнопки" onclick='showName()'>
+        <input id="icon2" type="button" value="ID формы" onclick='showID()'>
+        <input id="icon1" type="button" value="Сбросить форму" onclick='formReset()'>
+        <input id="icon4" type="button" value="Количество полей в форме" onclick='CountField()'>
+    </form>
+    <br>
+    <form id="9" name="a">
+        <label for="GET-name">Time:</label>
+        <input id="GET-name" type="text" name="time">
+        <input id="icon3" type="button" value="Имя кнопки" onclick='showName()'>
+        <input id="icon2" type="button" value="ID формы" onclick='showID()'>
+        <input id="icon1" type="button" value="Сбросить форму" onclick='formReset()'>
+        <input id="icon4" type="button" value="Количество полей в форме" onclick='CountField()'>
+    </form>
+    <br>
+    <form id="10" name="b" method="post">
+        <fieldset>
+            <legend>Form</legend>
+            <input type="radio" name="radio" id="radio"> <label for="radio">Click me</label>
+        </fieldset>
+        <input id="icon3" type="button" value="Имя кнопки" onclick='showName()'>
+        <input id="icon2" type="button" value="ID формы" onclick='showID()'>
+        <input id="icon1" type="button" value="Сбросить форму" onclick='formReset()'>
+        <input id="icon4" type="button" value="Количество полей в форме" onclick='CountField()'>
+    </form>
+
+    <br>
+
+    <script>
+    document.write('Имена четных форм: ');
+    var N = document.forms.length;
+    for (let i = 0; i < N - 1; i = i + 2) {
+        document.write(document.forms[i].name + ', ');
+    };
+    document.write(document.forms[8].name); // вывод последней формы, чтобы не было запятой
+    document.write('<br>');
+    </script>
+
+</body>
+
+</html>
