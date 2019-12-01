@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+		<script>
+			$(document).ready(function () {
+				$( "#b1" ).click(function() {
+  					$( "#fo" ).fadeOut();
+				});
+
+				$( "#b2" ).click(function() {
+					$( "#fi" ).fadeOut();
+  				$( "#fi" ).fadeIn();
+  				});
+
+  				$( "#b3" ).click(function() {
+					   $( "#su div" ).slideUp();
+					   $( "#su div" ).slideDown();
+  				});
+          $( "#b4" ).click(function() {
+             $( "#st div" ).slideToggle();
+          });
+			});
+		</script>
+	</head>
+	<body>
+		<table border = "1">
+  			<tr>
+    			<th>Текст</th>
+    			<th>Эффект/анимация</th>
+  			</tr>
+  			<tr>
+  				<td id="fo">123456789</td> <td><input id ="b1" type="button" value ="Click"></td>
+  			</tr>
+  			<tr>
+  				<td id="fi">123456789</td> <td><input id ="b2" type="button" value ="Click"></td>
+  			</tr>	
+  			<tr>
+  				<td id="su"><div>123456789</div></td> <td><input id ="b3" type="button" value ="Click"></td>
+  			</tr>	
+  			<tr>
+  				<td id="st"><div>123456789</div></td> <td><input id ="b4" type="button" value ="Click"></td>
+  			</tr>	
+		</table>
+	</body>
+</html>

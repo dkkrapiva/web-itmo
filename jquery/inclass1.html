@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+	<style>
+		.link1{
+			color: #20B2AA;
+			font-family: Arial;
+			font-weight: bold;
+			font-size: 20px;
+		}
+		.link2{
+			color: #20B2FF;
+			font-family: Cursive;
+			font-weight: bolder;
+			font-size: 30px;
+		}
+		.link3{
+			color: #FF4500;
+			font-family: Courier;
+			font-weight: lighter;
+			font-size: 15px;
+		}
+		.par1{
+			font-family: Courier;
+			color: #8B008B;
+		}
+		.par2{
+			font-family: Arial;
+			color: #00CED1;
+		}
+	</style>
+	<script>
+		$(document).ready(function(){
+			$("a").css({
+				'font-size':'35px',
+				'font-family':'Times New Roman',
+				'color':'#F0E68C'
+			});
+			$("p").css({
+				'font-size':'20px',
+				'color':'#800000'
+			});
+			$("form input").prop("disabled", true);
+		});
+	</script>
+</head>
+<body>
+	<a class = "link1" href ="#">Link1</a>
+	<br>
+	<a class = "link2" href ="#">Link2</a>
+	<br>
+	<a class = "link3" href ="#">Link3</a>
+	<br>
+	<p class = "par1">ITMO</p>
+	<p class = "par2">Program</p>
+
+	<form>
+		<fieldset>
+ 		<legend>Контактная информация</legend>
+ 		<label>Имя<input type="text" required></label>
+ 		<br>
+ 		<label>E-mail<input type="email" required></label>
+ 		<br>
+ 		<input type="button" value ="Отправить">
+ 		</fieldset>
+ 	</form>
+</body>
+</html>
