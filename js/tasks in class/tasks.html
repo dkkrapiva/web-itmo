@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>a</title>
+	 	<style>
+	 		.brd{
+	 			background: #AFEEEE;
+	 		}
+	 	</style>
+    	<script>
+    		function dis() {                                    //функция, которая делает кнопку неактивной
+    		document.getElementById('icon3').disabled = true; 
+  			}
+
+  			function formReset(){                               //функция сброса формы
+				document.getElementById('1').reset(); 
+			}
+
+			function formSubmit(){                            	//функция отправки формы
+				document.getElementById('1').submit();
+			}
+
+			function alignImg(){								//функция выравнивания изображений 
+				document.getElementById("images").align="center";
+			}
+
+			function addBorder(){								//функция, добавляющая границы к изображению
+				document.getElementById("img1").border="6";
+			}
+			function changeSize(){
+				document.getElementById("img2").height="450";   //функция, изменяющая размеры изображения
+				document.getElementById("img2").width="450";
+			}
+
+			function changeSrc(){								//замена изображения							
+  				document.getElementById("img1").src="change.jpg";
+  			}
+
+
+			function whichButton(event){                        //Какую кнопку мыши вы нажали
+				if (event.button==2){
+  					alert("Вы нажали правую кнопку мыши!");
+  				}
+				else{
+  					alert("Вы нажали левую кнопку мыши!");
+				}
+			}
+
+			function whichKey(event){						//Код клавиши
+				alert(event.keyCode);
+			}
+
+
+			function show_coords(event){						//координаты курсора
+				var x=event.clientX;
+				var y=event.clientY;
+				alert("Координата X: " + x + ", Координата Y: " + y);
+			}
+
+			function coordinates(event){							//координаты курсора относительно экрана
+				var x=event.screenX;
+				var y=event.screenY;
+				alert("X=" + x + " Y=" + y);
+			}
+  		</script>
+	</head>
+	<body onkeyup="whichKey(event)">
+		<a name="one" href="http://vk.com" id = "lVK">VK</a><br>
+    	<a name="two" href="http://google.com" id = "lGoogle">Google</a><br>
+    	<a name="three">ITMO</a><br>
+
+    	<form id="1" name="f1" action="URL" enctype="multipart/form-data" method="get">
+        	<label for="GET-name">Name:</label>
+        	<input id="GET-name" type="text" name="firstname" placeholder= "Введите имя">
+        	<input id="icon3" type="button" value="Кнопка" name = "button1" onclick = "dis()"> 
+        	<input type="button" onclick="formReset()" value="Сбросить форму" />
+        	<input type="button" onclick="formSubmit()" value="Отправить форму" />
+    	</form>
+
+    	<br>
+
+    	<div id = "images">
+    		<img height="250px" width="250px" src="img1.jpg" alt="cookies" id="img1" name = "Some cookies">
+    		<img width = "280px" height="280px" src="img2.jpg" alt="cat" id="img2" name = "A cat">
+    	</div>
+
+    	<div>
+    	<input type="button" onclick="alignImg()" value="Выравнять изображения"/>
+    	<input type="button" onclick="addBorder()" value="Добавить границу к первому изображению"/>
+    	<input type="button" onclick="changeSize()" value="Изменить размер второго изображения"/>
+    	<input type="button" onclick="changeSrc()" value="Изменить 1 изображение"/>
+    	</div>
+
+		<script>
+			let str = 'В алфавите русского языка 33 буквы'
+        	document.write(str, '<br>') //Вывод строки на экран
+        	document.write('Количество анкоров: ', document.anchors.length, '<br>');
+        	document.write('Содержимое первого анкора: ', document.anchors[0].innerHTML, '<br>');
+        	document.write('Количество форм: ', document.forms.length, '<br>');
+        	document.write('Имя первой формы: ', document.forms[0].name, '<br>');
+        	document.write('Количество изображений: ', document.images.length, '<br>');
+        	document.write('ID первого изображения: ', document.images[0].id, '<br>');
+        	document.write('Количество ссылок: ', document.links.length, '<br>');
+        	document.write('ID первой ссылки: ', document.links[0].id, '<br>');
+        	document.write('Имя домена сервера: ', document.domain, '<br>');
+        	document.write('Полный адрес url документа: ', decodeURI(document.location.href), '<br>')
+        	document.write('URL документа, который загрузил текущий документ: ',document.referrer,'<br>');
+        	document.write('Заголовок: ', document.title, '<br>');
+        	document.write('Имя кнопки: ', document.getElementById("icon3").name, '<br>');
+        	document.write('Тип кнопки: ', document.getElementById("icon3").type, '<br>');
+        	document.write('Имя на кнопке: ', document.getElementById("icon3").value, '<br>');
+        	document.write('Имя формы: ', document.getElementById("icon3").form.id, '<br>');
+
+        	var x = document.getElementById("1"); 
+			for (var i=0; i<x.length; i++){
+  				document.write('Значение ', i, ' элемента формы: ', x.elements[i].value);
+  				document.write("<br />");
+  			}
+
+  			document.write('Значение атрибута action: ', decodeURI(document.getElementById("1").action.split('/')[9]), '<br>');
+  			document.write('Значение атрибута enctype: ', document.getElementById("1").enctype, '<br>');
+  			document.write('Количество элементов в форме: ', document.getElementById("1").length, '<br>');
+  			document.write('Метод отправки данных с формы: ', document.getElementById("1").method, '<br>');
+  			document.write('Значение атрибута alt у 1 изображения: ', document.getElementById("img1").alt, '<br>');
+  			document.write('Значение атрибута alt у 2 изображения: ', document.getElementById("img2").alt, '<br>');
+  			document.write('Имя 1 изображения: ', document.getElementById("img1").name, '<br>');
+  			document.write('Имя 2 изображения: ', document.getElementById("img2").name, '<br>');
+        </script>
+    <div class ="brd" onmousedown="whichButton(event)">
+    	<h3>Какую кнопку мыши вы нажали?</h3>
+    </div>
+
+    <div class ="brd" onmousedown="show_coords(event)" border ="4">
+    	<h2>Координаты курсора?</h2>
+    </div>
+
+    <div class ="brd" onmousedown="coordinates(event)">
+    	<h2>Координаты курсора относительно экрана?</h2>
+    </div>
+	</body>
+</html>
+

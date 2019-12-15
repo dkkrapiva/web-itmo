@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>b</title>
+	<style>
+		#t1{
+  			width: 100px;
+  			height: 100px;
+		}
+	</style>
+	<script>
+		function changeB(){
+			document.getElementById('t1').border = "10";
+		}
+		function changecell(){
+			document.getElementById('t1').cellPadding = "10";
+			document.getElementById('t1').cellSpacing = "10";
+		}
+		function frame(){
+			document.getElementById('t1').frame="above";
+		}
+		function createCaption(){
+			var x = document.getElementById('t1').createCaption();
+			x.innerHTML = "Заголовок";
+		}
+		function deleter(){
+			document.getElementById('t1').deleteRow(0);
+		}
+		function insCell(){
+			var y=document.getElementById('tr1').insertCell(0);
+			y.innerHTML="a0";
+		}
+		function centerAlign(){
+			document.getElementById('tr1').align="center";
+			document.getElementById('tr2').align="center";
+		}
+		function topAlign(){
+			document.getElementById('tr1').vAlign="top";
+			document.getElementById('tr2').vAlign="top";
+		}
+		function alignCell(){
+			document.getElementById('td1').align="left";
+			document.getElementById('td1').vAlign="top";
+		}
+		function changeContent(){
+			var z=document.getElementById('t1').rows[0].cells;
+			z[0].innerHTML="aaaaaaaaaa";
+		}
+		function setColSpan(){
+			var w=document.getElementById('t1').rows[0].cells;
+			w[0].colSpan="2";
+		}
+	</script>
+</head>
+
+<body>
+	<table border="1" id="t1">
+		<tr id="tr1">
+			<td id="td1">a</td>
+			<td>b</td>
+		</tr>
+		<tr id="tr2">
+			<td>c</td>
+			<td>d</td>
+		</tr>
+	</table>
+	<br>
+	<input type="button" value="Изменить границы" onclick = "changeB()">
+	<br>
+	<input type="button" value="Изменить ячейки" onclick = "changecell()">
+	<br>
+	<input type="button" value="Указать рамку" onclick = "frame()">
+	<br>
+	<input type="button" value="Создать заголовок" onclick = "createCaption()">
+	<br>
+	<input type="button" value="Удалить 1 строку" onclick = "deleter()">
+	<br>
+	<input type="button" value="Добавить ячейку" onclick = "insCell()">
+	<br>
+	<input type="button" value="Выровнять ячейки" onclick = "centerAlign()">
+	<br>
+	<input type="button" value="Выровнять ячейки по вертикали" onclick = "topAlign()">
+	<br>
+	<input type="button" value="Выровнять 1 ячейку" onclick = "alignCell()">
+	<br>
+	<input type="button" value="Изменить значение 1 ячейки" onclick = "changeContent()">
+	<br>
+	<input type="button" value="Объединить ячейки" onclick = "setColSpan()">
+	<br>
+</body>
+
+</html>
