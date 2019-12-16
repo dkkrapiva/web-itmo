@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function Table() {
+			var valueL = document.getElementById('row').value;
+			var valueC = document.getElementById('column').value;
+			var table = '<table id = "t1" border="1">';
+
+			for( var i = 0; i < valueL; i++ ){
+
+				table += '<tr>';
+
+				for( var j = 0; j < valueC; j++ ){
+					table += '<td><textarea placeholder="Введи текст..."></textarea><input type="button" value="Сохранить" onclick="Save()"></td>';
+				}
+
+				table += '</tr>';
+			}
+			table += '</table>';
+			document.getElementById('table').innerHTML = table;
+
+			var dcr = document.getElementById("create1");
+			dcr.parentNode.removeChild(dcr);
+
+			var func = "<div id='function'></div>"
+			document.getElementById('mn').innerHTML += func;
+
+			document.getElementById('function').innerHTML += "<div id='f1'><input type = 'text'><select><option>dotted</option><option>dashed</option><option>solid</option><option>double</option></select><input type = 'button' id = 'test' value = 'Применить ' onclick = 'TableBord()'></div>";
+
+			document.getElementById('function').innerHTML += "<div id='f2'><input type = 'text' placeholder = 'Введи заголовок'><input type = 'button' value = 'Применить' onclick = 'Caption()'></div>";
+
+			document.getElementById('function').innerHTML += "<div id='f3'><input type = 'text' placeholder = 'Введи номер строки'><input type = 'button' id = 'test' value = 'Удалить' onclick = 'DeleteRow()'></div>"			
+
+			document.getElementById('function').innerHTML += "<div id='f4'><input type = 'button' value = 'Magic' onclick = 'Mag()'></div>"
+
+			document.getElementById('function').innerHTML += "<div id='f5'><input type = 'button' value = 'Удалить таблицу' onclick = 'DeleteTable()'></div>"	
+		};
+
+		function Save(){
+			var text = event.currentTarget.previousSibling.value; //значение элементов в текущем элементе (текущий элемент - кнопка, мы берем значение текстового поля)
+			event.currentTarget.parentNode.innerHTML = text; //весь tr заменяем текстом  
+		};
+
+		function TableBord(){
+			var wid = document.getElementById('f1').firstChild.value;
+			document.getElementById('t1').width = wid;
+			var st = document.getElementById('f1').firstChild.nextSibling.value;
+			document.getElementById('t1').style.borderStyle = st;
+			var ratevalue = document.getElementById('test');
+			ratevalue.value = "Применить " + wid + " px и рамка " + st;
+		};
+
+		function Caption(){
+			var caption = document.getElementById('f2').firstChild.value;
+			document.getElementById('t1').createCaption().innerHTML = caption;
+		};
+
+		function DeleteRow(){
+			var num = document.getElementById('f3').firstChild.value;
+			var rowlength = document.getElementById('t1').rows.length; 
+			if ((num-1) > rowlength) {
+				alert ("Некорректно");
+			}
+			else {
+				document.getElementById('t1').deleteRow(num-1);
+			}
+		};
+
+		function rand(min, max) {
+  			// получить случайное число от (min-0.5) до (max+0.5)
+  			var rand = min - 0.5 + Math.random() * (max - min + 1);
+  			return Math.round(rand);
+  		};
+
+  		function randomColor(){
+  			var r = Math.floor(Math.random()*(256)),
+			g = Math.floor(Math.random()*(256)),
+			b = Math.floor(Math.random()*(256));
+			return '#' + r.toString(16) + g.toString(16) + b.toString(16);  
+		};
+
+		function Mag(){
+			var col = rand(0, document.getElementById('t1').rows[0].cells.length-1); 
+			var row = rand(0, document.getElementById('t1').rows.length-1); 
+			switch (rand(1,4)) {
+				case 1:
+					document.getElementById('t1').rows[row].cells[col].style.backgroundColor = randomColor();
+					break;
+				case 2:
+					document.getElementById('t1').rows[row].cells[col].style.color = randomColor();
+					break;
+				case 3:
+					document.getElementById('t1').rows[row].cells[col].style.fontSize = rand(15,25) + 'pt';
+					break;
+				case 4:
+					document.getElementById('t1').rows[row].cells[col].innerHTML = '<td><textarea placeholder="Введи текст..."></textarea><input type="button" value="Сохранить" onclick="Save()"></td>'
+					break;
+			};
+		};
+
+		function DeleteTable(){
+			var dtable = document.getElementById("t1");
+			dtable.parentNode.removeChild(dtable);
+			var ano = document.getElementById("function");
+			ano.parentNode.removeChild(ano);
+			var newel = "<div id='create1'></div>";
+			document.getElementById('mn').innerHTML += newel;
+			document.getElementById('create1').innerHTML += '<input id="row" type="text" placeholder="Строки"><input id="column" type="text" placeholder="Столбцы"><input type="button" onclick="Table()" value="Создать">';
+		};
+
+	</script>
+</head>
+
+<body>
+    <div id="mn">
+    	<div id="create1">
+       		<input id="row" type="text" placeholder="Строки">
+       		<input id="column" type="text" placeholder="Столбцы">
+       		<input type="button" onclick="Table()" value="Создать">
+    	</div>
+    </div>
+    <div id="table">
+    </div>
+</body>
+
+</html>
